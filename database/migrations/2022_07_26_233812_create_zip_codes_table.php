@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cps', function (Blueprint $table) {
+        Schema::create('zip_codes', function (Blueprint $table) {
             $table->id();
-            $table->string('cp');
+            $table->string('zip_code');
             $table->foreignId('localities_id');
             $table->foreignId('federal_entity_id');
             $table->foreignId('settlements_id');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cps');
+        Schema::dropIfExists('zip_codes');
     }
 };

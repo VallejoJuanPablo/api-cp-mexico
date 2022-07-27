@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('key');
             $table->string('name');
             $table->enum('zone_type', ['Rural','Urbano'])->default('Rural');
-            $table->enum('settlement_type', ['Colonia','Equipamiento','Unidad habitacional','Fraccionamiento','Zona industrial','Rancho'])->default('Colonia');
+            $table->enum('settlement_type', ['Colonia','Equipamiento','Unidad habitacional','Fraccionamiento','Zona industrial','Pueblo'])->default('Colonia');
             $table->softDeletes();
             $table->timestamps();
         });

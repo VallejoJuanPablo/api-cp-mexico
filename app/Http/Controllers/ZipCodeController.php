@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cp;
+use App\Models\ZipCode;
+use App\Http\Resources\ZipCodeResource;
 use Illuminate\Http\Request;
 
-class CpController extends Controller
+class ZipCodeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,25 +42,26 @@ class CpController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cp  $cp
+     * @param  \App\Models\ZipCode  $zipCode
      * @return \Illuminate\Http\Response
      */
     public function show($zip_code)
     {
-        $cp = Cp::find($zip_code);
-        if ($cp) {
-            return response()->json(['cp' => $cp], 200);
+        error_log($zip_code);
+        $zc = ZipCode::find($zip_code);
+        error_log($zc);
+        if ($zc) {
+            return response()->json(new ZipCodeResource($zc), 200);
         }
-        return response()->json(['cp' => null], 404);
+        return response()->json("", 404);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cp  $cp
+     * @param  \App\Models\ZipCode  $zipCode
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cp $cp)
+    public function edit(ZipCode $zipCode)
     {
         //
     }
@@ -68,10 +70,10 @@ class CpController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cp  $cp
+     * @param  \App\Models\ZipCode  $zipCode
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cp $cp)
+    public function update(Request $request, ZipCode $zipCode)
     {
         //
     }
@@ -79,20 +81,11 @@ class CpController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cp  $cp
+     * @param  \App\Models\ZipCode  $zipCode
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cp $cp)
+    public function destroy(ZipCode $zipCode)
     {
         //
-    }
-    
-    public function getZipCode($zip_code)
-    {       
-        $cp = Cp::find($zip_code);
-        if ($cp) {
-            return response()->json(['cp' => $cp], 200);
-        }
-        return response()->json(['cp' => null], 404);
     }
 }
